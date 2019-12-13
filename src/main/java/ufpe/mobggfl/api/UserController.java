@@ -1,7 +1,10 @@
 package ufpe.mobggfl.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ufpe.mobggfl.models.Group;
 import ufpe.mobggfl.models.User;
 import ufpe.mobggfl.service.UserService;
 
@@ -23,4 +26,14 @@ public class UserController {
         return this.userService.listAllUsers();
     }
 
+    @GetMapping(path = "groups/{username}")
+    public List<Group> allGroupsByUsername(@PathVariable String username){
+        return this.userService.listAllGroupsByUsername(username);
+    }
+
+    @PostMapping(path= "groups/join/{username}/{groupName}")
+    public ResponseEntity joinGroup(@PathVariable String username,@PathVariable String groupName){
+        this.userService.joinGroup(username, groupName);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

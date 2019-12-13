@@ -1,4 +1,4 @@
-  create table tb_user_gruop(
+  create table tb_user_group(
      uuid UUID primary key not null,
      user_id UUID references tb_user(uuid),
      group_id UUID references tb_group(uuid)
