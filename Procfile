@@ -1,1 +1,1 @@
-web: java -jar target/go-Events-Back.jar
+web: java -jar target/go-Events-Back-1.0.jar
