@@ -1,0 +1,4 @@
+create table tb_group(
+    uuid UUID primary key not null,
+    name text unique not null
+ );
