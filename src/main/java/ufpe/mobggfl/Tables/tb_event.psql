@@ -1,6 +1,7 @@
  create table tb_event(
      uuid UUID primary key not null,
-     name text not null,
+     name text unique not null,
+     group_id UUID references tb_group(uuid) not null,
      lat int not null,
      long int not null
   );
