@@ -28,13 +28,8 @@ public class LoginController {
     }
 
     @GetMapping(path = "{username}/{encryptedPassword}")
-    public ResponseEntity login(@PathVariable String username,@PathVariable String encryptedPassword){
-        if(this.userService.login(username, encryptedPassword)){
-            return new ResponseEntity(HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
-        }
+    public User login(@PathVariable String username,@PathVariable String encryptedPassword){
+        return this.userService.login(username, encryptedPassword);
     }
 
 }

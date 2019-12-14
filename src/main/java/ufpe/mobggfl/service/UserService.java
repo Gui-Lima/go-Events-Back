@@ -24,11 +24,8 @@ public class UserService {
         this.userDao.insertUser(user);
     }
 
-    public boolean login(String username, String password) {
-         if(this.userDao.findUserByUsernameAndPassword(username, password) == null){
-             return false;
-         }
-         else return true;
+    public User login(String username, String password) {
+         return this.userDao.findUserByUsernameAndPassword(username, password);
     }
 
     public List<Group> listAllGroupsByUsername(String username){

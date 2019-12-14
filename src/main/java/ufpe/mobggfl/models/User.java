@@ -14,7 +14,7 @@ public class User {
     private ArrayList<Group> groups;
     private ArrayList<Event> events;
 
-    public User(@JsonProperty("name") String name, @JsonProperty("username") String username, @JsonProperty("passoword") String password){
+    public User(@JsonProperty("name") String name, @JsonProperty("username") String username, @JsonProperty("password") String password){
         this.name = name;
         this.id = UUID.randomUUID();
         this.username = username;
