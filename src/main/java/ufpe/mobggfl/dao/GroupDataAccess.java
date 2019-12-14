@@ -32,7 +32,7 @@ public class GroupDataAccess implements GroupDAO{
     Group groupWithId = new Group(group.getName(), group.getOwnerId());
 
     SqlParameterSource param = new MapSqlParameterSource()
-        .addValue("uuid", groupWithId.getId())
+        .addValue("uuid", groupWithId.getUuid())
         .addValue("name", groupWithId.getName())
         .addValue("ownerid", groupWithId.getOwnerId());
 
@@ -48,14 +48,14 @@ public class GroupDataAccess implements GroupDAO{
   public List<User> getUsers(Group group) {
     return template.query(
         String.format(
-            "select * from tb_user join tb_user_group on tb_user.uuid = tb_user_group.user_id where group_id=%s",group.getId()), new UserRowMapper());
+            "select * from tb_user join tb_user_group on tb_user.uuid = tb_user_group.user_id where group_id=%s",group.getUuid()), new UserRowMapper());
   }
 
   @Override
   public List<Event> getEvents(Group group) {
     return template.query(
         String.format(
-            "select * from tb_events where group_id = %s",group.getId()), new EventRowMapper());
+            "select * from tb_events where group_id = %s",group.getUuid()), new EventRowMapper());
   }
 
   @Override

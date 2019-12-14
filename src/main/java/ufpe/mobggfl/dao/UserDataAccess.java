@@ -52,7 +52,7 @@ public class UserDataAccess implements UserDAO {
         User userWithId = new User(user.getName(), user.getUsername(), user.getPassword());
 
         SqlParameterSource param = new MapSqlParameterSource()
-                .addValue("uuid", userWithId.getId())
+                .addValue("uuid", userWithId.getUuid())
                 .addValue("name", userWithId.getName())
                 .addValue("username", userWithId.getUsername())
                 .addValue("password", userWithId.getPassword());
@@ -64,7 +64,7 @@ public class UserDataAccess implements UserDAO {
     public List<Group> getGroups(User user) {
         return template.query(
             String.format(
-                "select * from tb_group join tb_user_group on tb_group.uuid = tb_user_group.group_id where tb_user_group.user_id='%s'",user.getId()), new GroupRowMapper());
+                "select * from tb_group join tb_user_group on tb_group.uuid = tb_user_group.group_id where tb_user_group.user_id='%s'",user.getUuid()), new GroupRowMapper());
     }
 
     @Override
@@ -76,8 +76,8 @@ public class UserDataAccess implements UserDAO {
 
         SqlParameterSource param = new MapSqlParameterSource()
             .addValue("uuid", uuid)
-            .addValue("user_id", user.getId())
-            .addValue("group_id", group.getId());
+            .addValue("user_id", user.getUuid())
+            .addValue("group_id", group.getUuid());
 
         template.update(sql,param, holder);
     }
@@ -90,7 +90,7 @@ public class UserDataAccess implements UserDAO {
 
         SqlParameterSource param = new MapSqlParameterSource()
 
-                .addValue("uuid", user.getId())
+                .addValue("uuid", user.getUuid())
 
                 .addValue("name", user.getName())
 

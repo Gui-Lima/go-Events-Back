@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class User {
     private String name;
-    private UUID id;
+    private UUID uuid;
     private String username;
     private String password;
     private ArrayList<Group> groups;
@@ -16,7 +16,7 @@ public class User {
 
     public User(@JsonProperty("name") String name, @JsonProperty("username") String username, @JsonProperty("password") String password){
         this.name = name;
-        this.id = UUID.randomUUID();
+        this.uuid = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.groups = new ArrayList<>();
@@ -33,12 +33,12 @@ public class User {
         this.name = name;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
-    public void setId(UUID id){
-        this.id = id;
+    public void setUuid(UUID uuid){
+        this.uuid = uuid;
     }
     public ArrayList<Group> getGroups() {
         return groups;

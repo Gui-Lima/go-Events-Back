@@ -7,14 +7,14 @@ import java.util.UUID;
 
 public class Group {
   private String name;
-  private UUID id;
+  private UUID uuid;
   private UUID ownerId;
   private ArrayList<Event> events;
 
   public Group(@JsonProperty("name") String name,@JsonProperty("ownerid") UUID ownerId){
     this.name = name;
     this.ownerId = ownerId;
-    this.id = UUID.randomUUID();
+    this.uuid = UUID.randomUUID();
     this.events = new ArrayList<>();
   }
 
@@ -28,12 +28,12 @@ public class Group {
     this.name = name;
   }
 
-  public UUID getId() {
-    return id;
+  public UUID getUuid() {
+    return uuid;
   }
 
-  public void setId(UUID id) {
-    this.id = id;
+  public void setUuid(UUID uuid) {
+    this.uuid = uuid;
   }
 
   public UUID getOwnerId() {
