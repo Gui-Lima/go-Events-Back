@@ -29,10 +29,12 @@ public class GroupDataAccess implements GroupDAO{
 
     KeyHolder holder = new GeneratedKeyHolder();
 
+    Group groupWithId = new Group(group.getName(), group.getOwnerId());
+
     SqlParameterSource param = new MapSqlParameterSource()
-        .addValue("uuid", group.getId())
-        .addValue("name", group.getName())
-        .addValue("ownerid", group.getOwnerId());
+        .addValue("uuid", groupWithId.getId())
+        .addValue("name", groupWithId.getName())
+        .addValue("ownerid", groupWithId.getOwnerId());
 
     template.update(sql,param, holder);
   }

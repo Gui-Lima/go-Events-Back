@@ -49,11 +49,13 @@ public class UserDataAccess implements UserDAO {
 
         KeyHolder holder = new GeneratedKeyHolder();
 
+        User userWithId = new User(user.getName(), user.getUsername(), user.getPassword());
+
         SqlParameterSource param = new MapSqlParameterSource()
-                .addValue("uuid", user.getId())
-                .addValue("name", user.getName())
-                .addValue("username", user.getUsername())
-                .addValue("password", user.getPassword());
+                .addValue("uuid", userWithId.getId())
+                .addValue("name", userWithId.getName())
+                .addValue("username", userWithId.getUsername())
+                .addValue("password", userWithId.getPassword());
 
         template.update(sql,param, holder);
     }

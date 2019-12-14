@@ -13,6 +13,7 @@ public class Event {
 
   public Event(@JsonProperty("name")String name,@JsonProperty("lat") int lat,@JsonProperty("long") int log,@JsonProperty("group_id") UUID group_id){
     this.name = name;
+    this.uuid = UUID.randomUUID();
     this.lat = lat;
     this.log = log;
     this.group_id = group_id;

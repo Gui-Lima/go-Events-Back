@@ -22,12 +22,14 @@ public class EventDataAccess implements EventDAO{
 
     KeyHolder holder = new GeneratedKeyHolder();
 
+    Event eventWithId = new Event(event.getName(), event.getLat(), event.getLog(), event.getGroup_id());
+
     SqlParameterSource param = new MapSqlParameterSource()
-        .addValue("uuid", event.getUuid())
-        .addValue("name", event.getName())
-        .addValue("group_id", event.getGroup_id())
-        .addValue("lat", event.getLat())
-        .addValue("long", event.getLog());
+        .addValue("uuid", eventWithId.getUuid())
+        .addValue("name", eventWithId.getName())
+        .addValue("group_id", eventWithId.getGroup_id())
+        .addValue("lat", eventWithId.getLat())
+        .addValue("long", eventWithId.getLog());
 
     template.update(sql,param, holder);
 
