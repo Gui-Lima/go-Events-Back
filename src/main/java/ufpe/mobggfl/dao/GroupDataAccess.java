@@ -25,16 +25,16 @@ public class GroupDataAccess implements GroupDAO{
 
   @Override
   public void insertGroup(Group group) {
-    final String sql = "insert into tb_group(uuid, name , ownerid) values(:uuid,:name,:ownerid)";
+    final String sql = "insert into tb_group(uuid, name , ownerid, ownerName) values(:uuid,:name,:ownerid,:ownerName)";
 
     KeyHolder holder = new GeneratedKeyHolder();
 
-    Group groupWithId = new Group(group.getName(), group.getOwnerId());
 
     SqlParameterSource param = new MapSqlParameterSource()
-        .addValue("uuid", groupWithId.getUuid())
-        .addValue("name", groupWithId.getName())
-        .addValue("ownerid", groupWithId.getOwnerId());
+        .addValue("uuid", group.getUuid())
+        .addValue("name", group.getName())
+        .addValue("ownerid", group.getOwnerId())
+        .addValue("ownername", group.getOwnerName());
 
     template.update(sql,param, holder);
   }

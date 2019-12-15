@@ -9,11 +9,13 @@ public class Group {
   private String name;
   private UUID uuid;
   private UUID ownerId;
+  private String ownerName;
   private ArrayList<Event> events;
 
-  public Group(@JsonProperty("name") String name,@JsonProperty("ownerid") UUID ownerId){
+  public Group(@JsonProperty("name") String name,@JsonProperty("ownerid") UUID ownerId, @JsonProperty("ownername") String ownerName){
     this.name = name;
     this.ownerId = ownerId;
+    this.ownerName = ownerName;
     this.uuid = UUID.randomUUID();
     this.events = new ArrayList<>();
   }
@@ -50,5 +52,13 @@ public class Group {
 
   public void setEvents(ArrayList<Event> events) {
     this.events = events;
+  }
+
+  public String getOwnerName() {
+    return ownerName;
+  }
+
+  public void setOwnerName(String ownerName) {
+    this.ownerName = ownerName;
   }
 }

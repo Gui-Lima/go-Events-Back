@@ -16,6 +16,7 @@ public class GroupRowMapper implements RowMapper<Group> {
     group.setUuid(UUID.fromString(resultSet.getString("uuid")));
     group.setName(resultSet.getString("name"));
     group.setOwnerId(UUID.fromString(resultSet.getString("ownerid")));
+    group.setOwnerName(resultSet.getString("ownername"));
     return group;
   }
 }

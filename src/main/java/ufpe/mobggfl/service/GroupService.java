@@ -19,8 +19,9 @@ public class GroupService {
   }
 
   public void addGroup(Group group){
-    this.groupDAO.insertGroup(group);
-    this.userDao.joinGroup(this.userDao.findUserById(group.getOwnerId()), group);
+    Group groupWithId = new Group(group.getName(), group.getOwnerId(),group.getOwnerName());
+    this.groupDAO.insertGroup(groupWithId);
+    this.userDao.joinGroup(this.userDao.findUserById(group.getOwnerId()), groupWithId);
   }
 
   public List<Group> listAllGroups(){
