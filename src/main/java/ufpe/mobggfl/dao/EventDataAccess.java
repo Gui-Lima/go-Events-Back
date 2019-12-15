@@ -18,7 +18,7 @@ public class EventDataAccess implements EventDAO{
 
   @Override
   public void insertEvent(Event event) {
-    final String sql = "insert into tb_event(uuid, name , group_id, lat, long, group_name) values(:uuid,:name,:group_id,:lat,:long, :group_name))";
+    final String sql = "insert into tb_event(uuid, name , group_id, lat, long, group_name) values(:uuid,:name,:group_id,:lat,:long, :group_name)";
 
     KeyHolder holder = new GeneratedKeyHolder();
 
