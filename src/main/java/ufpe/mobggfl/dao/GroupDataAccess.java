@@ -25,7 +25,7 @@ public class GroupDataAccess implements GroupDAO{
 
   @Override
   public void insertGroup(Group group) {
-    final String sql = "insert into tb_group(uuid, name , ownerid, ownerName) values(:uuid,:name,:ownerid,:ownerName)";
+    final String sql = "insert into tb_group(uuid, name , ownerid, ownerName) values(:uuid,:name,:ownerid,:ownername)";
 
     KeyHolder holder = new GeneratedKeyHolder();
 
