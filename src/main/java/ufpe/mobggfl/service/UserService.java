@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ufpe.mobggfl.dao.GroupDAO;
 import ufpe.mobggfl.dao.UserDAO;
+import ufpe.mobggfl.models.Event;
 import ufpe.mobggfl.models.Group;
 import ufpe.mobggfl.models.User;
 
@@ -31,6 +32,11 @@ public class UserService {
     public List<Group> listAllGroupsByUsername(String username){
         User user = userDao.findUserByUsername(username);
         return this.userDao.getGroups(user);
+    }
+
+    public List<Event> listAllEventsByUsername(String username){
+        User user = userDao.findUserByUsername(username);
+        return this.userDao.getEvents(user);
     }
 
     public void joinGroup(String username, String groupname){

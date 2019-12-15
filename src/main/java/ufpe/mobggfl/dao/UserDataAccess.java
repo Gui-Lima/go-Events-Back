@@ -6,8 +6,10 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import ufpe.mobggfl.mappers.EventRowMapper;
 import ufpe.mobggfl.mappers.GroupRowMapper;
 import ufpe.mobggfl.mappers.UserRowMapper;
+import ufpe.mobggfl.models.Event;
 import ufpe.mobggfl.models.Group;
 import ufpe.mobggfl.models.User;
 import java.util.List;
@@ -65,6 +67,13 @@ public class UserDataAccess implements UserDAO {
         return template.query(
             String.format(
                 "select * from tb_group join tb_user_group on tb_group.uuid = tb_user_group.group_id where tb_user_group.user_id='%s'",user.getUuid()), new GroupRowMapper());
+    }
+
+    @Override
+    public List<Event> getEvents(User user) {
+        return template.query(
+            String.format(
+                "select * from tb_event join tb_user_group on tb_event.group_id = tb_user_group.group_id join tb_user on tb_user_group.user_id = tb_user.id where tb_user.id = '%s'", user.getUuid()), new EventRowMapper());
     }
 
     @Override

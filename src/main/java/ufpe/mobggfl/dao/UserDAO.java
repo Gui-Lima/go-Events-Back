@@ -1,5 +1,6 @@
 package ufpe.mobggfl.dao;
 
+import ufpe.mobggfl.models.Event;
 import ufpe.mobggfl.models.Group;
 import ufpe.mobggfl.models.User;
 import java.util.List;
@@ -17,6 +18,8 @@ public interface UserDAO {
     void insertUser(User user);
 
     List<Group> getGroups(User user);
+
+    List<Event> getEvents(User user);
 
     void joinGroup(User user, Group group);
 
