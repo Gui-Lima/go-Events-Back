@@ -73,7 +73,7 @@ public class UserDataAccess implements UserDAO {
     public List<Event> getEvents(User user) {
         return template.query(
             String.format(
-                "select * from tb_event join tb_user_group on tb_event.group_id = tb_user_group.group_id join tb_user on tb_user_group.user_id = tb_user.id where tb_user.uuid = '%s'", user.getUuid()), new EventRowMapper());
+                "select * from tb_event join tb_user_group on tb_event.group_id = tb_user_group.group_id join tb_user on tb_user_group.user_id = tb_user.uuid where tb_user.uuid = '%s'", user.getUuid()), new EventRowMapper());
     }
 
     @Override
