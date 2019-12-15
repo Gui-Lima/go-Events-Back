@@ -18,18 +18,19 @@ public class EventDataAccess implements EventDAO{
 
   @Override
   public void insertEvent(Event event) {
-    final String sql = "insert into tb_event(uuid, name , group_id, lat, long) values(:uuid,:name,:group_id,:lat,:long))";
+    final String sql = "insert into tb_event(uuid, name , group_id, lat, long, group_name) values(:uuid,:name,:group_id,:lat,:long, :group_name))";
 
     KeyHolder holder = new GeneratedKeyHolder();
 
-    Event eventWithId = new Event(event.getName(), event.getLat(), event.getLog(), event.getGroup_id());
+    Event eventWithId = new Event(event.getName(), event.getLat(), event.getLog(), event.getGroup_id(), event.getGroup_name());
 
     SqlParameterSource param = new MapSqlParameterSource()
         .addValue("uuid", eventWithId.getUuid())
         .addValue("name", eventWithId.getName())
         .addValue("group_id", eventWithId.getGroup_id())
         .addValue("lat", eventWithId.getLat())
-        .addValue("long", eventWithId.getLog());
+        .addValue("long", eventWithId.getLog())
+        .addValue("group_name", eventWithId.getGroup_name());
 
     template.update(sql,param, holder);
 

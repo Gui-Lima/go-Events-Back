@@ -3,3 +3,4 @@ create table tb_group(
     name text unique not null,
     ownerid UUID references tb_user(uuid) not null
  );
+

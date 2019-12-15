@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ufpe.mobggfl.models.Event;
 import ufpe.mobggfl.models.Group;
 import ufpe.mobggfl.service.GroupService;
 
@@ -34,5 +35,11 @@ public class GroupController {
   @GetMapping("all")
   public List<Group> listGroups(){
     return this.groupService.listAllGroups();
+  }
+
+  @PostMapping("event")
+  public ResponseEntity addEvent(@RequestBody @Valid Event event){
+    this.groupService.addEvent(event);
+    return new ResponseEntity(HttpStatus.OK);
   }
 }

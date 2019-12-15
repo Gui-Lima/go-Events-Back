@@ -15,6 +15,7 @@ public class EventRowMapper implements RowMapper<Event> {
     event.setGroup_id(UUID.fromString(resultSet.getString("group_id")));
     event.setLat(Integer.parseInt(resultSet.getString("lat")));
     event.setLog(Integer.parseInt(resultSet.getString("long")));
+    event.setGroup_name(resultSet.getString("group_name"));
 
     return event;
   }

@@ -2,6 +2,7 @@
      uuid UUID primary key not null,
      name text unique not null,
      group_id UUID references tb_group(uuid) not null,
+     group_name text not null,
      lat int not null,
      long int not null
   );
